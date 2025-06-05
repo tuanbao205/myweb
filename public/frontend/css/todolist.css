@@ -1,0 +1,150 @@
+/* Reset toàn bộ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Nếu chỉ muốn reset riêng cho body */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white; /* hoặc màu của bạn */
+}
+
+.iconheader {
+    height: 50px; /* Chiều cao cố định để ảnh nhỏ gọn */
+    width: auto; /* Tự động tỉ lệ theo chiều cao */
+    margin-right: 20px; /* Khoảng cách giữa 2 ảnh */
+    vertical-align: middle; /* Căn giữa theo chiều dọc nếu cần */
+    cursor: pointer; /* Chuột đổi thành tay để gợi ý có thể click */
+    transition: transform 0.3s ease;
+}
+
+.iconheader.todolist {
+    background-color: #59aad8; /* màu vàng nhạt nổi bật */
+    padding: 5px; /* khoảng đệm trong ảnh */
+    border-radius: 5px; /* bo góc nhẹ */
+    box-shadow: 0 0 5px rgba(199, 188, 188, 0.3); /* đổ bóng để nổi bật hơn */
+}
+
+/* ========== SIDEBAR ========== */
+section .col-sm-3 {
+    background-color: #ffffff;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Nút tạo mới */
+section button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+section button:hover {
+    background-color: #0056b3;
+}
+
+section button img {
+    height: 20px;
+    width: auto;
+}
+
+/* DANH SÁCH NHIỆM VỤ */
+#taskListDropdown .card {
+    border: none;
+    padding-top: 10px;
+}
+
+#taskListDropdown button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    width: 100%;
+    text-align: left;
+}
+
+.b3 {
+    margin-bottom: 0;
+}
+/* Đảm bảo ảnh không bị phình to */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tùy biến giao diện Modal */
+.modal-content {
+    border-radius: 10px;
+    border: none;
+}
+
+.modal-header,
+.modal-footer {
+    border: none;
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+.form-control {
+    border: 1px solid #444;
+}
+
+.btn-primary {
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary {
+    border: 1px solid #555;
+}
+
+.btn-secondary:hover {
+    border-color: #777;
+}
+
+.btn-close {
+    filter: invert(1); /* biến nút close thành màu trắng */
+}
+
+.modal-content {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-radius: 10px;
+    border: none;
+}
+
+.modal-header,
+.modal-footer {
+    border: none;
+}
+
+.btn-close {
+    filter: none !important; /* Trả về nút đóng màu đen mặc định */
+}
+section {
+    padding-top: 5px; /* tạo khoảng cách bằng đúng chiều cao header */
+}
+.content-right {
+    background-color: #f8fafc;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    padding: 20px; /* Tạo khoảng cách bên trong */
+}
