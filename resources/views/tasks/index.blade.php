@@ -35,7 +35,7 @@
               </form>
             </li>
           </ul>
-          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -52,21 +52,60 @@
         <button class="btn btn-light w-100 text-start b3" type="button" data-bs-toggle="collapse" data-bs-target="#taskListDropdown" aria-expanded="false" aria-controls="taskListDropdown">
           <img src="{{ asset('frontend/images/tick.png') }}" alt=""> Danh sách nhiệm vụ
         </button>
+
         <div class="collapse show" id="taskListDropdown">
           <div class="card card-body">
-            @foreach ($taskLists as $list)
-            <form method="GET" action="{{ route('tasks.index') }}" style="display: inline;">
-              <input type="hidden" name="task_list_id" value="{{ $list->id }}">
-              <button 
-              type="submit" 
-              class="btn btn-light mb-2 {{ (isset($taskListId) && $taskListId == $list->id) ? 'active' : '' }}">
-              {{ $list->name }}
-              </button>
-            </form>
-            @endforeach
-            @if ($taskLists->isEmpty())
+            @forelse ($taskLists as $list)
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <form method="GET" action="{{ route('tasks.index') }}" style="flex-grow: 1;">
+                  <input type="hidden" name="task_list_id" value="{{ $list->id }}">
+                  <button 
+                    type="submit" 
+                    class="btn btn-light w-100 text-start {{ (isset($taskListId) && $taskListId == $list->id) ? 'active' : '' }}">
+                    {{ $list->name }}
+                  </button>
+                </form>
+                <div class="ms-2 d-flex gap-1 flex-shrink-0">
+  <button class="btn btn-sm btn-outline-primary px-2 py-1" data-bs-toggle="modal" data-bs-target="#editListModal{{ $list->id }}">Sửa</button>
+  <form method="POST" action="{{ route('task-lists.destroy', $list->id) }}">
+    @csrf
+    @method('DELETE')
+    <button class="btn btn-sm btn-outline-danger px-2 py-1" onclick="return confirm('Bạn có chắc muốn xoá danh sách này?')">Xoá</button>
+  </form>
+</div>
+
+
+              </div>
+
+              <!-- Modal sửa danh sách -->
+              <div class="modal fade" id="editListModal{{ $list->id }}" tabindex="-1" aria-labelledby="editListModalLabel{{ $list->id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                  <form method="POST" action="{{ route('task-lists.update', $list->id) }}">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-content">
+                     <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; padding-right: 1rem;">
+  <h5 class="modal-title" style="margin: 0; white-space: nowrap;">Sửa danh sách</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng" style="width: 1rem; height: 1rem;"></button>
+</div>
+
+                      <div class="modal-body">
+                        <div class="mb-3">
+                          <label for="editListName{{ $list->id }}" class="form-label">Tên danh sách</label>
+                          <input type="text" class="form-control" id="editListName{{ $list->id }}" name="name" value="{{ $list->name }}" required>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            @empty
               <p class="text-muted">Chưa có danh sách nào.</p>
-            @endif
+            @endforelse
           </div>
         </div>
       </div>
@@ -79,14 +118,26 @@
         <ul class="list-group">
           @forelse($tasks as $task)
             <li class="list-group-item">
-              <h5>{{ $task->title }} 
-                <span class="badge bg-info">
-                  {{ $task->all_day ? 'Cả ngày' : \Carbon\Carbon::parse($task->date_time)->format('d/m/Y H:i') }}
-                </span>
-              </h5>
-              @if($task->description)
-                <p>{{ $task->description }}</p>
-              @endif
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <h5>{{ $task->title }} 
+                    <span class="badge bg-info">
+                      {{ $task->all_day ? 'Cả ngày' : \Carbon\Carbon::parse($task->date_time)->format('d/m/Y H:i') }}
+                    </span>
+                  </h5>
+                  @if($task->description)
+                    <p>{{ $task->description }}</p>
+                  @endif
+                </div>
+                <div>
+                  <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editTaskModal{{ $task->id }}">Sửa</button>
+                  <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc muốn xoá nhiệm vụ này không?')">Xoá</button>
+                  </form>
+                </div>
+              </div>
             </li>
           @empty
             <li class="list-group-item">Chưa có nhiệm vụ nào.</li>
@@ -100,7 +151,7 @@
   <div class="modal fade" id="createListModal" tabindex="-1" aria-labelledby="createListModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form id="createListForm" method="POST" action="{{ route('task-lists.store') }}">
+        <form method="POST" action="{{ route('task-lists.store') }}">
           @csrf
           <div class="modal-header">
             <h5 class="modal-title">Tạo danh sách mới</h5>
@@ -169,7 +220,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Ẩn/hiện trường ngày giờ khi chọn "Cả ngày"
     document.addEventListener('DOMContentLoaded', function () {
       const allDayCheck = document.getElementById('allDayCheck');
       const taskDateInput = document.getElementById('taskDate');
@@ -182,5 +232,54 @@
       allDayCheck.addEventListener('change', toggleDateInputType);
     });
   </script>
+
+  <!-- Modal sửa nhiệm vụ -->
+  @foreach ($tasks as $task)
+    <div class="modal fade" id="editTaskModal{{ $task->id }}" tabindex="-1" aria-labelledby="editTaskModalLabel{{ $task->id }}" aria-hidden="true">
+      <div class="modal-dialog">
+        <form method="POST" action="{{ route('tasks.update', $task->id) }}">
+          @csrf
+          @method('PUT')
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Chỉnh sửa nhiệm vụ</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="taskTitle{{ $task->id }}" class="form-label">Tiêu đề</label>
+                <input type="text" name="title" class="form-control" id="taskTitle{{ $task->id }}" value="{{ $task->title }}" required>
+              </div>
+              <div class="mb-3">
+                <label for="taskDate{{ $task->id }}" class="form-label">Ngày và giờ</label>
+                <input type="{{ $task->all_day ? 'date' : 'datetime-local' }}" name="date_time" class="form-control" id="taskDate{{ $task->id }}" value="{{ \Carbon\Carbon::parse($task->date_time)->format($task->all_day ? 'Y-m-d' : 'Y-m-d\TH:i') }}" required>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" name="all_day" id="allDayEditCheck{{ $task->id }}" value="1" {{ $task->all_day ? 'checked' : '' }}>
+                <label class="form-check-label" for="allDayEditCheck{{ $task->id }}">Cả ngày</label>
+              </div>
+              <div class="mb-3">
+                <label for="taskDescription{{ $task->id }}" class="form-label">Mô tả</label>
+                <textarea class="form-control" name="description" id="taskDescription{{ $task->id }}" rows="3">{{ $task->description }}</textarea>
+              </div>
+              <div class="mb-3">
+                <label for="taskList{{ $task->id }}" class="form-label">Chọn danh sách nhiệm vụ</label>
+                <select name="task_list_id" id="taskList{{ $task->id }}" class="form-select" required>
+                  @foreach($taskLists as $list)
+                    <option value="{{ $list->id }}" {{ $task->task_list_id == $list->id ? 'selected' : '' }}>{{ $list->name }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer border-secondary">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+              <button type="submit" class="btn btn-primary">Cập nhật</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  @endforeach
+
 </body>
 </html>
