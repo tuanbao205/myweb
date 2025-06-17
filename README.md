@@ -1,21 +1,4 @@
-# KTPM_Group5More actions
 
----
-
-
-## 👨‍💻 Nhóm phát triển
-
-* **Tên nhóm**: Group5_LT7
-* **Liên hệ**: https://github.com/hongquan23
-
-## 👥 **Thành viên nhóm**
-
-*  **Lương Hồng Quân**
-*  **Hà Xuân Đại**
-*  **Lê Thị Cẩm Ly**
-*  **Hoàng Tuấn Bảo**
-
----
 
 # 🕒 Ứng Dụng Quản Lý Thời Gian
 
@@ -71,14 +54,4 @@
 
 ---
 
-## 🚀 Hướng phát triển trong tương lai
-
-* Thêm bộ đếm thời gian Pomodoro
-* Báo cáo hiệu suất cá nhân theo ngày/tuần/tháng
-* Giao diện kéo thả trực quan (drag & drop)
-* Tích hợp chia sẻ nhiệm vụ theo nhómMore actions
-* Hỗ trợ đa nền tảng (web/mobile)
-
-
----
 
