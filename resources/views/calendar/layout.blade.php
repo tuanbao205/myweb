@@ -11,17 +11,17 @@
     <header>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-4">
-                    <a href="#"><img src="{{ ('frontend/images/calendar.png')}}" alt="logocld" class="iconheader calendar"></a>
-                    <a href="{{ route('tasks.index') }}"><img src="{{ ('frontend/images/to-do-list.png')}}" alt="logotdl" class="iconheader todolist"></a>
-                </div>
-                <div class="col-sm-4 d-flex align-items-center justify-content-center gap-2">
-                    <button id="btn-today" class="btn btn-outline-dark">Hôm nay</button>
-                    <button id="btn-prev" class="btn text-dark"><img src="{{ ('frontend/images/left-arrow.png')}}" alt=""></button>
-                    <button id="btn-next" class="btn text-dark"><img src="{{ ('frontend/images/right-arrow.png')}}" alt=""></button>
-                    <p class="month-year-display" id="monthYear"></p>
-                </div> 
-                <div class="col-sm-4 text-end dropdown">
+				<div class="col-sm-4">
+					<a href="#"><img src="{{ ('frontend/images/calendar.png')}}" alt="logocld" class="iconheader calendar"></a>
+					<a href="{{ route('tasks.index') }}"><img src="{{ ('frontend/images/to-do-list.png')}}" alt="logotdl" class="iconheader todolist"></a>
+				</div>
+				<div class="col-sm-4 d-flex align-items-center justify-content-center gap-2">
+					<button id="btn-today" class="btn btn-outline-dark">Hôm nay</button>
+					<button id="btn-prev" class="btn text-dark"><img src="{{ ('frontend/images/left-arrow.png')}}" alt=""></button>
+					<button id="btn-next" class="btn text-dark"><img src="{{ ('frontend/images/right-arrow.png')}}" alt=""></button>
+					<p class="month-year-display" id="monthYear"></p>
+				</div>	
+				<div class="col-sm-4 text-end dropdown">
                     <a href="#" class="d-inline-flex align-items-center text-decoration-none text-dark" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ Auth::user()->name }}
                         <img src="{{ asset('frontend/images/profile.png') }}" alt="Profile" class="rounded-circle ms-2 iconheader" style="width: 50px; height: 50px;">
@@ -36,7 +36,8 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+
+			</div>
         </div>
     </header>
     <section>
@@ -44,9 +45,9 @@
             <div class="row">
                 <div class="col-sm-3 sticky-sidebar">
                     <div class="d-flex justify-content-between align-items-center px-2">
-                        <button id="prev-month" class="btn btn-sm "><img src="{{ ('frontend/images/left-arrow.png')}}" alt=""></button>
-                        <h4 id="calendar-title"></h4>
-                        <button id="next-month" class="btn btn-sm "><img src="{{ ('frontend/images/right-arrow.png')}}" alt=""></button>
+                      <button id="prev-month" class="btn btn-sm "><img src="{{ ('frontend/images/left-arrow.png')}}" alt=""></button>
+                      <h4 id="calendar-title"></h4>
+                      <button id="next-month" class="btn btn-sm "><img src="{{ ('frontend/images/right-arrow.png')}}" alt=""></button>
                     </div>
                     <table>
                         <thead>
@@ -147,34 +148,23 @@
     let editingEventId = null; // Biến toàn cục lưu id sự kiện đang chỉnh sửa
     
     // Biến lưu ngày hiện tại được chọn (cho lịch tháng nhỏ)
-    let selectedDate = new Date(); // Khởi tạo selectedDate là hôm nay
-    selectedDate.setHours(0,0,0,0); // Đảm bảo thời gian là 00:00:00 để so sánh chính xác
+    let selectedDate = new Date(currentDate);
 
     // Chuyển $events từ PHP sang JS
-    // Giả định biến events này chứa TẤT CẢ các sự kiện mà bạn muốn hiển thị
+    // Giả định biến `events` này chứa TẤT CẢ các sự kiện mà bạn muốn hiển thị
     // trong toàn bộ lịch, không chỉ tuần đầu tiên.
     const allEvents = @json($events);
 
     // Hàm chọn ngày trong lịch tháng
     function selectDate(year, month, day) {
-        // Cập nhật selectedDate
         selectedDate = new Date(year, month, day);
-        selectedDate.setHours(0,0,0,0); // Đảm bảo thời gian là 00:00:00 để so sánh chính xác
-
-        // Nếu tháng hoặc năm khác thì cập nhật currentDate để cập nhật lại lịch tháng
-        if (month !== currentDate.getMonth() || year !== currentDate.getFullYear()) {
-            currentDate = new Date(year, month, 1);
-        } else {
-            // Nếu cùng tháng và năm, chỉ cần cập nhật ngày trong currentDate
-            currentDate.setDate(day);
-        }
-        currentDate.setHours(0,0,0,0); // Đảm bảo thời gian là 00:00:00 để so sánh chính xác
+        currentDate = new Date(year, month, day); // Cập nhật luôn currentDate về ngày vừa chọn
 
         // Cập nhật lại lịch tháng, tuần và tiêu đề
-        taolich(currentDate.getMonth(), currentDate.getFullYear(), false); // false vì đã update main title
-        renderWeekView(selectedDate); // Truyền selectedDate để render tuần dựa trên ngày được chọn
-        updateWeekTitle(); // Có thể không cần thiết nếu bạn đã quyết định không hiển thị tiêu đề tuần
-        renderEventsOnWeekView(allEvents); // Gọi lại để vẽ các sự kiện phù hợp với tuần mới
+        taolich(currentDate.getMonth(), currentDate.getFullYear(), false);
+        renderWeekView(currentDate); // render tuần dựa trên ngày vừa chọn
+        updateWeekTitle();
+        renderEventsOnWeekView(allEvents); // Vẽ sự kiện theo tuần mới
     }
 
     // Hàm tạo lịch tháng
@@ -185,7 +175,6 @@
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const today = new Date();
-        today.setHours(0,0,0,0); // Reset time for accurate comparison
 
         let date = 1;
         for (let i = 0; i < 6; i++) {
@@ -197,18 +186,19 @@
                 } else if (date > daysInMonth) {
                     cell.innerText = "";
                 } else {
-                    const currentCellDate = new Date(year, month, date);
-                    currentCellDate.setHours(0,0,0,0); // Reset time for accurate comparison
-
                     cell.innerText = date;
                     if (
-                        currentCellDate.toDateString() === today.toDateString()
+                        date === today.getDate() &&
+                        month === today.getMonth() &&
+                        year === today.getFullYear()
                     ) {
                         cell.classList.add("today");
                     }
                     // Thêm class 'selected-day' nếu là ngày đang được chọn
                     if (
-                        currentCellDate.toDateString() === selectedDate.toDateString()
+                        date === selectedDate.getDate() &&
+                        month === selectedDate.getMonth() &&
+                        year === selectedDate.getFullYear()
                     ) {
                         cell.classList.add("selected-day");
                     }
@@ -286,7 +276,7 @@
             timeLabels.appendChild(div);
         }
 
-        weekBody.innerHTML = ""; // Xóa các hàng giờ cũ trước khi tạo lại
+        weekBody.innerHTML = "";
         for (let h = 0; h < 24; h++) {
             const row = document.createElement("div");
             row.className = "hour-row";
@@ -301,63 +291,47 @@
 
     document.getElementById("prev-month").addEventListener("click", () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
-        // Khi chuyển tháng, selectedDate sẽ được giữ nguyên ngày nhưng chuyển tháng/năm theo currentDate
-        selectedDate.setMonth(currentDate.getMonth());
-        selectedDate.setFullYear(currentDate.getFullYear());
-        
-        taolich(currentDate.getMonth(), currentDate.getFullYear(), true); 
-        renderWeekView(selectedDate); 
+        // Khi chuyển tháng, selectedDate sẽ tự động điều chỉnh trong taolich dựa vào currentDate
+        taolich(currentDate.getMonth(), currentDate.getFullYear(), true);
+        renderWeekView(selectedDate); // Render tuần dựa trên selectedDate
         updateWeekTitle();
-        renderEventsOnWeekView(allEvents); 
+        renderEventsOnWeekView(allEvents); // Vẽ lại sự kiện
     });
 
     document.getElementById("next-month").addEventListener("click", () => {
         currentDate.setMonth(currentDate.getMonth() + 1);
-        selectedDate.setMonth(currentDate.getMonth());
-        selectedDate.setFullYear(currentDate.getFullYear());
-        
-        taolich(currentDate.getMonth(), currentDate.getFullYear(), true); 
-        renderWeekView(selectedDate); 
+        // Khi chuyển tháng, selectedDate sẽ tự động điều chỉnh trong taolich dựa vào currentDate
+        taolich(currentDate.getMonth(), currentDate.getFullYear(), true);
+        renderWeekView(selectedDate); // Render tuần dựa trên selectedDate
         updateWeekTitle();
-        renderEventsOnWeekView(allEvents); 
+        renderEventsOnWeekView(allEvents); // Vẽ lại sự kiện
     });
 
     document.getElementById("btn-prev").addEventListener("click", () => {
-        // Di chuyển selectedDate về tuần trước
-        selectedDate.setDate(selectedDate.getDate() - 7);
-        // Cập nhật currentDate để khớp với tháng/năm của selectedDate
-        currentDate.setMonth(selectedDate.getMonth());
-        currentDate.setFullYear(selectedDate.getFullYear());
-        
-        taolich(currentDate.getMonth(), currentDate.getFullYear(), true); 
-        renderWeekView(selectedDate); 
+        currentDate.setDate(currentDate.getDate() - 7);
+        selectedDate.setDate(selectedDate.getDate() - 7); // Cập nhật selectedDate theo tuần mới
+        taolich(currentDate.getMonth(), currentDate.getFullYear(), true); // Cập nhật lịch tháng để làm nổi bật ngày đúng
+        renderWeekView(currentDate); // render tuần mới
         updateWeekTitle();
-        renderEventsOnWeekView(allEvents); 
+        renderEventsOnWeekView(allEvents); // Vẽ lại sự kiện
     });
 
     document.getElementById("btn-next").addEventListener("click", () => {
-        // Di chuyển selectedDate về tuần sau
-        selectedDate.setDate(selectedDate.getDate() + 7);
-        // Cập nhật currentDate để khớp với tháng/năm của selectedDate
-        currentDate.setMonth(selectedDate.getMonth());
-        currentDate.setFullYear(selectedDate.getFullYear());
-        
-        taolich(currentDate.getMonth(), currentDate.getFullYear(), true); 
-        renderWeekView(selectedDate); 
+        currentDate.setDate(currentDate.getDate() + 7);
+        selectedDate.setDate(selectedDate.getDate() + 7); // Cập nhật selectedDate theo tuần mới
+        taolich(currentDate.getMonth(), currentDate.getFullYear(), true); // Cập nhật lịch tháng để làm nổi bật ngày đúng
+        renderWeekView(currentDate); // render tuần mới
         updateWeekTitle();
-        renderEventsOnWeekView(allEvents); 
+        renderEventsOnWeekView(allEvents); // Vẽ lại sự kiện
     });
 
     document.getElementById("btn-today").addEventListener("click", () => {
         currentDate = new Date();
         selectedDate = new Date(); // Cập nhật selectedDate về hôm nay
-        selectedDate.setHours(0,0,0,0); 
-        currentDate.setHours(0,0,0,0); 
-
         taolich(currentDate.getMonth(), currentDate.getFullYear(), true);
-        renderWeekView(selectedDate); 
+        renderWeekView(currentDate);
         updateWeekTitle();
-        renderEventsOnWeekView(allEvents); 
+        renderEventsOnWeekView(allEvents); // Vẽ lại sự kiện
     });
 
     function toggleTimeInputs() {
@@ -391,11 +365,8 @@
             return;
         }
 
-        const url = editingEventId ? `/events/${editingEventId}` : "{{ route('events.store') }}";
-        const method = editingEventId ? 'PUT' : 'POST'; // Sử dụng PUT cho chỉnh sửa, POST cho tạo mới
-
-        fetch(url, {
-            method: method,
+        fetch("{{ route('events.store') }}", {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -405,26 +376,36 @@
                 all_day: allDay,
                 start_time: startDate,
                 end_time: endDate,
-                description: description,
-                // Nếu chỉnh sửa, có thể cần thêm ID nếu API yêu cầu trong body
-                // id: editingEventId 
+                description: description
             })
         })
         .then(response => {
             if (response.ok) {
+                // Nếu đang chỉnh sửa, gửi yêu cầu xóa sự kiện cũ, sau đó reload
+                // LƯU Ý: Cách này không tối ưu vì sẽ tạo sự kiện mới rồi mới xóa cái cũ.
+                // Nếu Laravel API của bạn hỗ trợ PUT/PATCH cho chỉnh sửa, bạn nên dùng nó.
+                if (editingEventId) {
+                    fetch(`/events/${editingEventId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json'
+                        }
+                    }).then(() => {
+                        editingEventId = null;
+                        location.reload(); // Tải lại trang để lấy dữ liệu event mới
+                    }).catch(error => console.error('Error deleting old event:', error));
+                } else {
+                    location.reload(); // Tải lại trang để lấy dữ liệu event mới
+                }
+                
                 // Đóng modal và reset form
                 const modalEl = document.getElementById('createTaskModal');
                 const modal = bootstrap.Modal.getInstance(modalEl);
                 modal.hide();
                 document.getElementById('createTaskForm').reset();
-                editingEventId = null; // Reset editingEventId sau khi submit thành công
-                location.reload(); // Tải lại trang để lấy dữ liệu event mới
             } else {
-                response.json().then(data => {
-                    alert(data.message || 'Lỗi khi tạo/chỉnh sửa sự kiện');
-                }).catch(() => {
-                    alert('Lỗi khi tạo/chỉnh sửa sự kiện');
-                });
+                alert('Lỗi khi tạo sự kiện');
             }
         })
         .catch(error => {
@@ -438,16 +419,12 @@
         const weekBody = document.getElementById("week-body");
         // Xóa tất cả các sự kiện cũ trước khi render lại
         const oldEvents = weekBody.querySelectorAll('.event-item');
-        console.log('Xóa các sự kiện cũ:', oldEvents.length); // Thêm log này
         oldEvents.forEach(eventDiv => eventDiv.remove());
 
-        // Sử dụng selectedDate để lấy tuần hiện tại
-        const weekDates = getWeekDates(selectedDate); 
+        const weekDates = getWeekDates(currentDate);
         const weekStart = weekDates[0].full; // Lấy Chủ Nhật đầu tuần hiện tại
         const weekEnd = weekDates[6].full; // Lấy Thứ Bảy cuối tuần hiện tại
         weekEnd.setHours(23,59,59,999); // Set đến cuối ngày Thứ Bảy
-
-        console.log('Tuần hiện tại từ:', weekStart.toDateString(), 'đến', weekEnd.toDateString()); // Thêm log này
 
         const MILLISECONDS_PER_HOUR = 60 * 60 * 1000;
         const HOUR_HEIGHT = 60; // px chiều cao 1 giờ trong lịch
@@ -463,12 +440,10 @@
             }
 
             // Nếu sự kiện không nằm trong tuần hiện tại thì bỏ qua
-            // Điều kiện này sẽ lọc các sự kiện từ allEvents
+            // Điều kiện này sẽ lọc các sự kiện từ `allEvents`
             if (end < weekStart || start > weekEnd) {
-                // console.log('Bỏ qua sự kiện (không nằm trong tuần):', event.title, start.toDateString(), end.toDateString()); // Thêm log này
                 return;
             }
-            console.log('Vẽ sự kiện:', event.title, start.toLocaleString(), 'đến', end.toLocaleString()); // Thêm log này
 
             // Lặp qua từng ngày mà sự kiện kéo dài trong tuần hiện tại
             let currentSegmentStart = new Date(Math.max(start.getTime(), weekStart.getTime()));
@@ -492,14 +467,12 @@
                 const durationHours = (currentSegmentEnd.getTime() - currentSegmentStart.getTime()) / MILLISECONDS_PER_HOUR;
 
                 const weekBody = document.getElementById("week-body");
-                // Đảm bảo rằng startRow không âm và không vượt quá số lượng hàng giờ (23 hoặc 24)
-                const startRow = Math.min(Math.floor(startHour), 23); 
+                const startRow = Math.floor(startHour);
                 const cell = weekBody.children[startRow]?.children[dayIndex];
                 
                 if (!cell) {
-                    console.warn(`Không tìm thấy ô cho sự kiện ${event.title} tại giờ ${startRow}, ngày ${dayIndex}. Chuyển sang ngày tiếp theo.`);
-                    currentSegmentStart = new Date(dayEndBoundary.getTime() + MILLISECONDS_PER_HOUR); // Chuyển sang ngày tiếp theo
-                    continue; // Bỏ qua việc vẽ cho segment này nếu không tìm thấy cell
+                     currentSegmentStart = new Date(dayEndBoundary.getTime() + MILLISECONDS_PER_HOUR); // Chuyển sang ngày tiếp theo
+                     continue;
                 }
 
                 const eventDiv = document.createElement("div");
@@ -530,7 +503,7 @@
                 eventDiv.style.textOverflow = "ellipsis";
                 eventDiv.style.cursor = "pointer";
 
-                cell.style.position = "relative"; // Đảm bảo cell có position relative
+                cell.style.position = "relative";
                 cell.appendChild(eventDiv);
 
                 // Thêm trình xử lý sự kiện click cho từng sự kiện
@@ -568,13 +541,9 @@
                                     .then(res => {
                                         if (res.ok) {
                                             modal.hide();
-                                            location.reload(); // Tải lại trang để cập nhật allEvents
+                                            location.reload();
                                         } else {
-                                            res.json().then(data => {
-                                                alert(data.message || 'Xóa sự kiện thất bại!');
-                                            }).catch(() => {
-                                                alert('Xóa sự kiện thất bại!');
-                                            });
+                                            res.text().then(text => alert(text));
                                         }
                                     });
                                 }
@@ -610,7 +579,7 @@
 
     // Khởi tạo ban đầu
     taolich(currentDate.getMonth(), currentDate.getFullYear(), true);
-    renderWeekView(selectedDate); // Truyền selectedDate để render tuần ban đầu đúng
+    renderWeekView(currentDate);
     updateWeekTitle();
     renderEventsOnWeekView(allEvents); // Gọi lần đầu để hiển thị sự kiện
 </script>

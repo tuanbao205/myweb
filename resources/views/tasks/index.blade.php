@@ -1,7 +1,8 @@
 @php
   use App\Models\TaskList;
-  $taskLists = TaskList::all();
+  $taskLists = TaskList::where('user_id', auth()->id())->get();
 @endphp
+
 
 <!DOCTYPE html>
 <html lang="en">

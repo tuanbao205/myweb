@@ -1,61 +1,84 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# KTPM_Group5More actions
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 👨‍💻 Nhóm phát triển
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* **Tên nhóm**: Group5_LT7
+* **Liên hệ**: https://github.com/hongquan23
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 👥 **Thành viên nhóm**
 
-## Learning Laravel
+*  **Lương Hồng Quân**
+*  **Hà Xuân Đại**
+*  **Lê Thị Cẩm Ly**
+*  **Hoàng Tuấn Bảo**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# 🕒 Ứng Dụng Quản Lý Thời Gian
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Ứng dụng Quản Lý Thời Gian** là một phần mềm hỗ trợ người dùng lập kế hoạch công việc, theo dõi tiến độ, và nhận nhắc nhở để duy trì sự tập trung và cải thiện hiệu suất cá nhân.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📌 Mục tiêu của dự án
 
-### Premium Partners
+Ứng dụng được xây dựng để giúp người dùng quản lý thời gian một cách khoa học, hiệu quả và linh hoạt. Đối tượng hướng đến gồm:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+* 🎓 **Học sinh, sinh viên**: Quản lý lịch học, ôn thi, kiểm soát thời gian cá nhân.
+* 🧑‍💼 **Nhân viên văn phòng**: Sắp xếp lịch làm việc, theo dõi công việc hằng ngày.
+* 🧑‍🏫 **Chuyên gia, coach, quản lý nhóm**: Điều phối nhiều dự án, đảm bảo tiến độ đúng hạn.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🧩 Vấn đề cần giải quyết
 
-## Code of Conduct
+1. **Thiếu tổ chức trong công việc**: Cho phép tạo và ưu tiên nhiệm vụ, lên kế hoạch hợp lý.
+2. **Dễ bị xao nhãng**: Tính năng nhắc nhở giúp duy trì sự tập trung.
+3. **Quản lý công việc kém hiệu quả**: Cung cấp cái nhìn tổng quan về thời gian làm việc.
+4. **Trì hoãn công việc (Procrastination)**: Hệ thống theo dõi thời gian hỗ trợ giảm sự trì hoãn.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## 💡 Tại sao dự án này đáng để xây dựng?
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* ✅ **Tăng năng suất cá nhân**: Hoàn thành nhiều việc hơn trong thời gian ngắn hơn.
+* ✅ **Cải thiện chất lượng cuộc sống**: Cân bằng giữa công việc và đời sống cá nhân.
+* ✅ **Phù hợp xu hướng làm việc hiện đại**: Hỗ trợ làm việc từ xa, làm việc tự do.
+* ✅ **Tiềm năng thị trường rộng lớn**: Phục vụ đa dạng người dùng ở nhiều ngành nghề.
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🛠️ Công nghệ sử dụng
+
+
+| Thành phần   | Công nghệ             | Mô tả                                                                 |
+| ------------ | --------------------- | --------------------------------------------------------------------- |
+| **Frontend** | HTML, CSS, JavaScript | Xây dựng giao diện người dùng, xử lý tương tác cơ bản                 |
+| **Backend**  | PHP, Laravel          | Xử lý logic nghiệp vụ, tạo RESTful API, xác thực người dùng (JWT)     |
+| **Database** | MySQL                 | Lưu trữ dữ liệu quan hệ, hỗ trợ truy vấn hiệu quả và mở rộng hệ thống |
+
+---
+
+## 🔧 Các tính năng chính
+
+* ✅ Tạo, chỉnh sửa, xóa nhiệm vụ
+* ✅ Nhắc nhở thông minh theo thời gian hoặc mức độ ưu tiên
+* ✅ Phân loại và ưu tiên nhiệm vụ
+* ✅ Xác thực và bảo mật người dùng bằng JWT
+
+---
+
+## 🚀 Hướng phát triển trong tương lai
+
+* Thêm bộ đếm thời gian Pomodoro
+* Báo cáo hiệu suất cá nhân theo ngày/tuần/tháng
+* Giao diện kéo thả trực quan (drag & drop)
+* Tích hợp chia sẻ nhiệm vụ theo nhómMore actions
+* Hỗ trợ đa nền tảng (web/mobile)
+
+
+---
+

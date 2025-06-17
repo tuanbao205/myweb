@@ -26,6 +26,8 @@ header {
     vertical-align: middle; /* Căn giữa theo chiều dọc nếu cần */
     cursor: pointer; /* Chuột đổi thành tay để gợi ý có thể click */
     transition: transform 0.3s ease;
+    box-shadow: 0 2px 8px rgba(66, 88, 231, 0.18);
+
 }
 
 .iconheader.calendar {
@@ -36,6 +38,8 @@ header {
 }
 
 #btn-today {
+    background: linear-gradient(135deg, #5cd6f5, #49aed6); 
+    color: white;
     border-radius: 20px;
 }
 
@@ -136,7 +140,7 @@ thead th {
 
 /* Ngày hôm nay */
 .today {
-    background-color: #007bff;
+    background: linear-gradient(135deg, #5cd6f5, #49aed6); 
     color: #fff;
     font-weight: bold;
     border-radius: 100%;
@@ -241,6 +245,8 @@ tbody td:hover {
 }
 
 .tao button {
+    background: linear-gradient(135deg, #2272a7, #3d92d3);
+    color: #fff;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -254,7 +260,8 @@ tbody td:hover {
 }
 
 .tao button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(135deg, #2272a7, #49aed6);
+    transform: translateY(-2px) scale(1.03);
 }
 
 .plus {
@@ -276,7 +283,18 @@ tbody td:hover {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 .event-item {
-    cursor: pointer;
-    margin: 1px 0;
+    background: linear-gradient(135deg, #3db1d4, #b1edf5, #667eea);
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(27, 155, 234, 0.18);
+    border: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.event-item:hover {
+    border-color: #0d91e3;
+    transform: scale(1.03);
+    z-index: 2;
 }

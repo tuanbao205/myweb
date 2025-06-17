@@ -10,7 +10,7 @@ class Event extends Model
     use HasFactory;
 
     protected $fillable = [
-    'title', 'description', 'all_day', 'start_time', 'end_time'
+    'title', 'description', 'all_day', 'start_time', 'end_time', 'user_id',
 ];
 
 
@@ -19,5 +19,10 @@ class Event extends Model
         'end_time' => 'datetime',
         'all_day' => 'boolean',
     ];
+    public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
 }
 

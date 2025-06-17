@@ -12,8 +12,9 @@ Route::get('/', function () {
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('calendar.layout');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -29,8 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/task-lists', [ListController::class, 'store'])->name('task-lists.store');
     Route::resource('tasks', TaskController::class)->except(['show']);
     Route::resource('task-lists', ListController::class)->only(['store', 'update', 'destroy']);
-
-
 });
 
 

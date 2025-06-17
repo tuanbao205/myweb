@@ -15,6 +15,7 @@ public function up()
         $table->id();
         $table->string('name');
         $table->timestamps();
+        $table->foreignId('user_id')->constrained()->onDelete('cascade');
     });
 }
 
@@ -25,5 +26,9 @@ public function up()
     public function down(): void
     {
         Schema::dropIfExists('task_lists');
+        Schema::table('task_lists', function (Blueprint $table) {
+        $table->dropForeign(['user_id']);
+        $table->dropColumn('user_id');
+    });
     }
 };
