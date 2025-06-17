@@ -20,3 +20,9 @@
  4. Blade Template
  5. Tailwind CSS
 
+## Sơ đồ khối
+
+![image](https://github.com/user-attachments/assets/65909f2e-36c4-4b0f-84e9-a589562f550e)
+
+## Sơ đồ chức năng
+
