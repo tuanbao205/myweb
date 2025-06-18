@@ -108,12 +108,12 @@
 
 ![image](https://github.com/user-attachments/assets/5f22a266-68a6-4b81-931e-33fc74010d5c)
 
-### Tạo sự kiện:
+#### Tạo sự kiện:
 
 ![image](https://github.com/user-attachments/assets/421da543-639a-4e4b-92f5-a05cb90dfaea)
 ![image](https://github.com/user-attachments/assets/f0a41fa7-58d5-425e-9f39-b4933f8bf786)
 
-### Sửa/xoá sự kiện
+#### Sửa/xoá sự kiện
 
 ![image](https://github.com/user-attachments/assets/520235ce-9f39-4b35-ac91-99459649faf8)
 
@@ -131,7 +131,8 @@
 ![image](https://github.com/user-attachments/assets/4c0446f3-526b-460c-a476-7fdeeefdf6d8)
 ![image](https://github.com/user-attachments/assets/d73588bf-706d-4543-87ba-de7a42bd6d62)
 
-
+# License & Copy Rights
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
 
