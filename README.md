@@ -83,8 +83,12 @@
 ![image](https://github.com/user-attachments/assets/ceb668ee-e629-473d-b6f5-a0b5f34393eb)
 
 ## Routes
-
+Sử dụng Middleware để bảo vệ request
 ![image](https://github.com/user-attachments/assets/61126689-88db-4e38-80a4-392ff77edc4e)
+
+## Security Setup
+Sử dụng @csrf và xss để chống tấn công
+![image](https://github.com/user-attachments/assets/22726e81-c2df-4a80-ba61-81c3265e2b7d)
 
 # Link
 
