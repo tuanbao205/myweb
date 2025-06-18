@@ -34,8 +34,7 @@
 
 ## Sơ đồ thuật toán
 
-![image](https://github.com/user-attachments/assets/38378e8c-64f4-4274-9f19-9189ce57f4be)
-
+![image](https://github.com/user-attachments/assets/bece3c6c-da40-4b58-a233-570f5c9dac73)
 
 # Một số Code chính minh họa
 
