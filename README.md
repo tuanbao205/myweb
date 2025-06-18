@@ -81,3 +81,60 @@
 ## Routes
 
 ![image](https://github.com/user-attachments/assets/61126689-88db-4e38-80a4-392ff77edc4e)
+
+# Link
+
+## Github Profile : https://github.com/tuanbao205/myweb
+
+## Link Demo : 
+
+## Public Web (deployment) link: https://timemanagerment.onrender.com
+
+# Một số hình ảnh chức năng chính
+
+### Trang đăng nhập:
+
+![image](https://github.com/user-attachments/assets/e74f5cda-b2c3-4546-bd56-6ab7510b8413)
+
+### Trang đăng ký:
+
+![image](https://github.com/user-attachments/assets/b28884b5-9145-4b19-a232-46e1dd4fdbad)
+
+### Trang quên mật khẩu: 
+
+![image](https://github.com/user-attachments/assets/f703d799-1892-4054-b39e-45426e5be8f8)
+
+## Trang chủ:
+
+![image](https://github.com/user-attachments/assets/5f22a266-68a6-4b81-931e-33fc74010d5c)
+
+### Tạo sự kiện:
+
+![image](https://github.com/user-attachments/assets/421da543-639a-4e4b-92f5-a05cb90dfaea)
+![image](https://github.com/user-attachments/assets/f0a41fa7-58d5-425e-9f39-b4933f8bf786)
+
+### Sửa/xoá sự kiện
+
+![image](https://github.com/user-attachments/assets/520235ce-9f39-4b35-ac91-99459649faf8)
+
+## Trang nhiệm vụ
+
+![image](https://github.com/user-attachments/assets/34c86aa4-7dc2-4da5-9fa7-cfab20b411b5)
+
+### Tạo danh sách nhiệm vụ
+
+![image](https://github.com/user-attachments/assets/0f4eceff-94f0-4ba9-b691-d63a119a39c4)
+![image](https://github.com/user-attachments/assets/1d53e21e-4df0-4239-9455-2ef067a9219a)
+
+### Tạo nhiệm vụ
+
+![image](https://github.com/user-attachments/assets/4c0446f3-526b-460c-a476-7fdeeefdf6d8)
+![image](https://github.com/user-attachments/assets/d73588bf-706d-4543-87ba-de7a42bd6d62)
+
+
+
+
+
+
+
+
