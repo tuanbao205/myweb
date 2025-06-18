@@ -24,9 +24,13 @@
 
 ![image](https://github.com/user-attachments/assets/5d0c2a26-19a6-40b1-8d30-756ce71e9334)
 
+## Sơ đồ usecase
+
+![image](https://github.com/user-attachments/assets/52088a4d-f557-41fe-b88c-ef55d321b50b)
+
 ## Sơ đồ chức năng
 
-
+![image](https://github.com/user-attachments/assets/a3ebe2da-01fe-43ea-a6f8-4eab4a3600fd)
 
 ## Sơ đồ thuật toán
 
