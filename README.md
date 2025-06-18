@@ -22,7 +22,7 @@
 
 ## Sơ đồ khối
 
-![image](https://github.com/user-attachments/assets/5d0c2a26-19a6-40b1-8d30-756ce71e9334)
+![image](https://github.com/user-attachments/assets/4e77f750-5c95-42ea-8220-7c25ad218f0b)
 
 ## Sơ đồ usecase
 
@@ -89,6 +89,9 @@ Sử dụng Middleware để bảo vệ request
 ## Security Setup
 Sử dụng @csrf và xss để chống tấn công
 ![image](https://github.com/user-attachments/assets/22726e81-c2df-4a80-ba61-81c3265e2b7d)
+
+Validation để kiểm tra và ràng buộc dữ liệu
+![image](https://github.com/user-attachments/assets/53ed778e-2644-4f82-a3a1-a62ae246fb2d)
 
 # Link
 
